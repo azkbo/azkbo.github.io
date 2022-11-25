@@ -4,9 +4,9 @@
  * Desc: 
  */
 
-import { Config, getAppHost } from './config'
+import { Config, getTagHost } from './config'
 
-const ws_host = getAppHost(Config.env, 'ws');
+const ws_host = getTagHost('ws',Config.env);
 
 let socket_ins = null;
 let socket_status = 0; // 0未连接；1已打开；2传输中；3已断开

@@ -5,14 +5,14 @@
  */
 
 import { network } from './fetch'
-import { Config, getAppHost, requestHeader, requestParams } from './config'
+import { Config, getTagHost, requestHeader, requestParams } from './config'
 
 // 请求
 export function request({ path, method = "GET", data = {}, headers = {}, host = Config.host, env = Config.env, loading = true, loadingStr = "加载中...", toast = true } = {}) {
 
   // loading && _showLoading(loading, loadingStr); // 加载框
 
-  const url = getAppHost(env, host) + path; // 拼接请求地址
+  const url = getTagHost(host, env) + path; // 拼接请求地址
   data = requestParams(data); // 处理参数
   headers = requestHeader(headers); // 处理请求头
 

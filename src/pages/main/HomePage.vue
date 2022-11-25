@@ -51,8 +51,8 @@ export default {
       showDialog: 0, // 0无弹窗；1创建房间弹窗；2显示房间信息
       tabIndex: 0, // 0创建房间；1进入房间
       roomInfo: {},
-      roomList: [{id: 0,status: 0,score: 0, name: '东部', code: 0}],
-      homeBg: Images.tanks_bg,
+      roomList: [{id: 0,status: 0,score: 0, name: '东部游人', code: 0}],
+      homeBg: Images.home_bg,
       empty_ic: Images.empty,
     };
   },
@@ -86,7 +86,7 @@ export default {
     openGameInfo(status, code) {
       if (status == 1) {
         Consts.roomCode = code;
-        this.$router.push({ path: `game/${code}` });
+        // this.$router.push({ path: `game/${code}` });
       } else {
         this.showDialog = 1;
         this.tabIndex = 1;

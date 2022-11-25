@@ -5,10 +5,10 @@
  */
 
 import empty from './img/empty.png';
-import tanks_bg from './img/tanks_bg.png';
+import home_bg from './img/home_bg.png';
 
 const Images = {
   empty,
-  tanks_bg
+  home_bg
 }
 export default Images;

@@ -24,7 +24,7 @@ export function requestHeader(header) {
 }
 
 // 根据环境获取根路径
-export function getAppHost(env = 'prod', host = 'base') {
+export function getTagHost(host = 'base', env = 'prod') {
   return AppHost[env][host];
 }
 
