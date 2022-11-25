@@ -1,0 +1,4 @@
+# https://www.robotstxt.org/robotstxt.html
+# 使用/robots.txt文件向网络机器人提供有关其访问的说明；这被称为机器人排除协议
+User-agent: *
+Disallow:
