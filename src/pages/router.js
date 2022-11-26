@@ -5,9 +5,9 @@
  */
 import { createRouter, createWebHashHistory } from 'vue-router';
 
-
 const App = () => import('../App.vue')
 const Home = () => import('./main/HomePage.vue')
+const LoginPage = () => import('./account/LoginPage.vue')
 const Notfound = () => import('./other/NotfoundPage.vue')
 
 // const history = createWebHistory();
@@ -20,6 +20,7 @@ export const routers = createRouter({
   routes: [
     { path: '/', redirect: '/home', component: App },
     { path: '/home', name: 'home', component: Home },
+    { path: '/login', name: 'login', component: LoginPage },
     { path: '/*', name: 'notfound', component: Notfound },
   ]
 });

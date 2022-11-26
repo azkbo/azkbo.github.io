@@ -31,21 +31,14 @@
       :index="tabIndex"
       :onChange="createOrJoinGame"
     />
-    <GameRoomInfo
-      v-if="showDialog == 2"
-      :info="roomInfo"
-      :onClose="onDigClose"
-    />
   </div>
 </template>
 <script>
 import Images from "../../assets/index";
 import CreateGame from "../../components/CreateGame.vue";
-import GameRoomInfo from "../../components/GameRoomInfo.vue";
-import Consts from "../../modules/constant/index";
 
 export default {
-  components: { CreateGame, GameRoomInfo },
+  components: { CreateGame },
   data() {
     return {
       showDialog: 0, // 0无弹窗；1创建房间弹窗；2显示房间信息
@@ -62,18 +55,6 @@ export default {
       this.showDialog = 1;
     },
 
-    onReloadEvent() {
-      this.showDialog = 1;
-    },
-
-    onNavigateEvent() {
-      this.showDialog = 1;
-    },
-
-    onBackEvent() {
-      this.showDialog = 1;
-    },
-
     onDigClose() {
       this.showDialog = 0;
     },
@@ -83,14 +64,17 @@ export default {
     },
 
     // 进入游戏
-    openGameInfo(status, code) {
+    openGameInfo(status) {
       if (status == 1) {
-        Consts.roomCode = code;
         // this.$router.push({ path: `game/${code}` });
       } else {
         this.showDialog = 1;
         this.tabIndex = 1;
       }
+    },
+
+    onToBarTab(path) {
+      this.$router.push({ path });
     },
 
     // 获取房间列表
@@ -99,9 +83,8 @@ export default {
     },
 
     // 创建或加入游戏
-    async createOrJoinGame(e) {
+    async createOrJoinGame() {
       this.showDialog = 0;
-      Consts.userName = e.userName;
     },
   },
 };

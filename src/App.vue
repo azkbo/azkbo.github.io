@@ -1,12 +1,20 @@
 <template>
+  <AppToolbar :onBindTab="onBindTab" />
   <router-view></router-view>
 </template>
 
 <script>
+import AppToolbar from "./components/AppToolbar.vue";
+
 export default {
   name: "App",
+  components: { AppToolbar },
   mounted() {},
-  unmounted() {},
+  methods: {
+    onToBarTab(path) {
+      this.$router.push({ path });
+    }
+  },
 };
 </script>
 

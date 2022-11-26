@@ -13,6 +13,7 @@ body {
   background-color: #f8f8f8;
 }
 .page {
+  position: relative;
   display: flex;
   flex-direction: column;
 }

@@ -42,6 +42,66 @@ export function request({ path, method = "GET", data = {}, headers = {}, host = 
   });
 }
 
+// 上传多文件
+export function uploads(files = []) {
+  if (files && files.length > 0) {
+    _loading(true, '上传中...');
+    return new Promise((resolve) => {
+      Promise.all(files.map((e) => upload(e)))
+        .then((array) => {
+          let data = { all: false, count: array.length, imgs: [] };
+          if (array) {
+            array.forEach((e) => {
+              if (e.code == 0) {
+                data.imgs.push(e);
+              }
+            });
+            data.all = data.imgs.length == data.count;
+          }
+          resolve({ code: 0, data });
+        })
+        .catch((err) => {
+          console.log(err);
+          resolve({ code: -1003, data: null });
+        });
+    });
+  }
+}
+
+// 上传文件
+export function upload(file) {
+  return new Promise((resolve) => {
+    const url = getTagHost('oss');
+    // wx.uploadFile({
+    //   url,
+    //   filePath: file,
+    //   name: 'file',
+    //   formData: { bucket: 'bajanju-p' },
+    //   success: (res) => {
+    //     // console.log(res);
+    //     let dataStr = res.data || '{}';
+    //     if (res.statusCode == 200 && dataStr) {
+    //       if (dataStr.indexOf('http:') > -1) {
+    //         dataStr = dataStr.replace('http:', 'https:');
+    //       }
+    //       const info = JSON.parse(dataStr) || {};
+    //       if (info.code == 0 || info.success) {
+    //         resolve({ code: 0, data: info.content });
+    //       } else {
+    //         resolve({ code: info.code, data: null, message: info.msg });
+    //       }
+    //     } else {
+    //       resolve({ code: -1001, data: null });
+    //     }
+    //   },
+    //   fail: (err) => {
+    //     console.log(err);
+    //     resolve({ code: -1002, data: null });
+    //   },
+    // });
+  });
+}
+
 // {code, result, msg}
 function _parseData(res, result) {
   result.code = res.code;

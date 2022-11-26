@@ -72,7 +72,6 @@
   </div>
 </template>
 <script>
-import Consts from '../modules/constant';
 
 /**
  * Author: Meng
@@ -94,7 +93,7 @@ export default {
   },
   data() {
     return {
-      inputObj: { roomName: "", userName: Consts.userName, roomPwd: "qwer", code: Consts.roomCode||'', roomCode: 0 },
+      inputObj: { roomName: "", userName: '', roomPwd: "qwer", code: '', roomCode: 0 },
       tabIdx: 0,
     };
   },
