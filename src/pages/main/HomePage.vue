@@ -7,7 +7,8 @@
       <div v-for="room in roomList" :key="room.id">
         <div
           class="column home-grid-item"
-          @click="openGameInfo(room.status, room.code)">
+          @click="openGameInfo(room.status, room.code)"
+        >
           <div class="row ai-center item-info">
             <h3 class="flex">{{ room.name }}</h3>
             <span>{{ transformStatus(room.status) }}</span>
@@ -44,15 +45,18 @@ export default {
       showDialog: 0, // 0无弹窗；1创建房间弹窗；2显示房间信息
       tabIndex: 0, // 0创建房间；1进入房间
       roomInfo: {},
-      roomList: [{id: 0,status: 0,score: 0, name: '东部游人', code: 0}],
+      roomList: [{ id: 0, status: 0, score: 0, name: "东部游人", code: 0 }],
       homeBg: Images.home_bg,
       empty_ic: Images.empty,
     };
   },
-  mounted() {},
+  mounted() {
+    
+  },
   methods: {
     showCreateDig() {
-      this.showDialog = 1;
+      // this.showDialog = 1;
+      
     },
 
     onDigClose() {
@@ -74,9 +78,7 @@ export default {
     },
 
     // 获取房间列表
-    async getRoomList() {
-      
-    },
+    async getRoomList() {},
 
     // 创建或加入游戏
     async createOrJoinGame() {
