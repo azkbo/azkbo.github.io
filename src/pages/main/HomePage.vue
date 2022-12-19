@@ -73,10 +73,6 @@ export default {
       }
     },
 
-    onToBarTab(path) {
-      this.$router.push({ path });
-    },
-
     // 获取房间列表
     async getRoomList() {
       

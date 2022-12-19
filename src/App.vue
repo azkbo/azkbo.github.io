@@ -1,5 +1,5 @@
 <template>
-  <AppToolbar :onBindTab="onBindTab" />
+  <AppToolbar :onBindTab="onToBarTab" />
   <router-view></router-view>
 </template>
 

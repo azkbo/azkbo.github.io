@@ -2,7 +2,7 @@
   <div class="v-header-height">
     <div class="v-header v-row" :style="color">
       <img class="v-logo" />
-      <span class="v-title" @click="onTabClick('logo')"> {{title}} </span>
+      <span class="v-title" @click="onTabClick('home')"> {{title}} </span>
       <div class="v-flex"></div>
       <span class="v-tab v-point" @click="onTabClick('menu')"> 目录 </span>
       <span class="v-tab v-point" @click="onTabClick('catalog')"> 技术栈 </span>
@@ -18,7 +18,7 @@ export default {
   props: {
     title: {
       type: String,
-      default: "东闲",
+      default: "知之学吧",
     },
     onBindTab: {
       type: Function,
@@ -92,7 +92,7 @@ export default {
   height: 32px;
   border-radius: 50%;
   margin: 0 16px 0 32px;
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(211, 83, 215, 0.7);
 }
 .v-flex {
   flex: 1;
