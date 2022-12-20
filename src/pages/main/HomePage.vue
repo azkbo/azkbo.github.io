@@ -37,6 +37,7 @@
 <script>
 import Images from "../../assets/index";
 import CreateGame from "../../components/CreateGame.vue";
+import Bus from '../../modules/bus/index'
 
 export default {
   components: { CreateGame },
@@ -45,18 +46,30 @@ export default {
       showDialog: 0, // 0无弹窗；1创建房间弹窗；2显示房间信息
       tabIndex: 0, // 0创建房间；1进入房间
       roomInfo: {},
-      roomList: [{ id: 0, status: 0, score: 0, name: "东部游人", code: 0 }],
+      roomList: [{ id: 0, status: 0, score: 0, name: "知之学吧", code: 0 }],
       homeBg: Images.home_bg,
       empty_ic: Images.empty,
     };
   },
   mounted() {
-    
+    Bus.one('home', (data) => {
+      console.log('home-event1:', data)
+    })
+    Bus.add('home', (data) => {
+      console.log('home-event2:', data)
+    })
+    Bus.one('home', (data) => {
+      console.log('home-event3:', data)
+    })
+    Bus.add('home', (data) => {
+      console.log('home-event4:', data)
+    })
   },
   methods: {
     showCreateDig() {
       // this.showDialog = 1;
-      
+      Bus.send('home', Date.now(), 2000)
+
     },
 
     onDigClose() {
@@ -64,7 +77,7 @@ export default {
     },
 
     transformStatus(status) {
-      return status == 0 ? "招募中" : status == 1 ? "进行中" : "已结束";
+      return status == 0 ? "学习中" : status == 1 ? "进行中" : "已结束";
     },
 
     // 进入游戏

@@ -16,8 +16,8 @@ export const BusKey = {
 };
 
 class Bus {
-   static _event_bus = []; // 事件集合{ key, event, mode: 订阅模式, tag: 标签, }
-   static _stick_bus = []; // 消息集合{ key, data: 消息}
+  static _event_bus = []; // 事件集合{ key, event, mode: 订阅模式, tag: 标签, }
+  static _stick_bus = []; // 消息集合{ key, data: 消息}
 
   // 添加事件
   static add(key, event, tag) {
@@ -63,7 +63,7 @@ class Bus {
     const _bus = Bus._event_bus;
     try {
       _bus.forEach((e) => {
-        if(e.key == key) {
+        if (e.key == key) {
           if (e.event) {
             e.event(data);
           } else {
